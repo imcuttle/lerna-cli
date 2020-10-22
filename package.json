@@ -1,0 +1,85 @@
+{
+  "name": "lerna-cli",
+  "version": "3.0.0",
+  "description": "lerna cli with custom command extensions, forked with official [lerna](https://www.npmjs.com/package/lerna)",
+  "author": "imcuttle <imcuttle@163.com.com>",
+  "scripts": {
+    "test": "npx jest",
+    "preversion": "npm test",
+    "version": "npm run changelog",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
+  },
+  "bin": {
+    "lerna": "cli.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged",
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
+    }
+  },
+  "sideEffects": false,
+  "engines": {
+    "node": ">=10"
+  },
+  "files": [
+    "es",
+    "types",
+    "lib",
+    "src",
+    "__tests__"
+  ],
+  "keywords": [
+    "imcuttle",
+    "lerna",
+    "cli",
+    "lerna-cli",
+    "custom",
+    "command",
+    "diy"
+  ],
+  "main": "src/index.js",
+  "license": "MIT",
+  "repository": "imcuttle/lerna-cli",
+  "jest": {
+    "testMatch": [
+      "**/__test{s,}__/*.(spec|test).{t,j}s{x,}"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@types/jest": "^26.0.15",
+    "conventional-changelog-cli": "^2.1.0",
+    "husky": "^4.3.0",
+    "jest": "^26.6.0",
+    "prettier": "^2.1.2",
+    "pretty-quick": "^3.1.0"
+  },
+  "dependencies": {
+    "@lerna/project": "^3.21.0",
+    "import-local": "^3.0.2",
+    "npmlog": "^4.1.2",
+    "@lerna/add": "^3.21.0",
+    "@lerna/bootstrap": "^3.21.0",
+    "@lerna/changed": "^3.21.0",
+    "@lerna/clean": "^3.21.0",
+    "@lerna/cli": "^3.18.5",
+    "@lerna/create": "^3.22.0",
+    "@lerna/diff": "^3.21.0",
+    "@lerna/exec": "^3.21.0",
+    "@lerna/import": "^3.22.0",
+    "@lerna/info": "^3.21.0",
+    "@lerna/init": "^3.21.0",
+    "@lerna/link": "^3.21.0",
+    "@lerna/list": "^3.21.0",
+    "@lerna/publish": "^3.22.1",
+    "@lerna/run": "^3.21.0",
+    "@lerna/version": "^3.22.1"
+  }
+}
