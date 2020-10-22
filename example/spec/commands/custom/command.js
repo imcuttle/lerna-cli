@@ -28,5 +28,5 @@ exports.builder = (yargs) =>
   })
 
 exports.handler = function handler(argv) {
-  process.stdout.write(JSON.stringify(argv))
+  process.stdout.write(JSON.stringify({ ...argv, $0: '' }))
 }

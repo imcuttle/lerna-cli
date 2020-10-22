@@ -39,7 +39,7 @@ describe('lernaCli', function () {
       JSON.stringify({
         _: ['custom'],
         lernaVersion: version,
-        $0: lernaCliPath
+        $0: ''
       })
     )
   })
