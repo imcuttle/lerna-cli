@@ -9,6 +9,8 @@
 
 > lerna cli with custom command extensions, forked with official [lerna](https://www.npmjs.com/package/lerna)
 
+See https://github.com/lerna/lerna/issues/2742
+
 ## Installation
 
 ```bash
