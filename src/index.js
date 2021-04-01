@@ -5,7 +5,7 @@
 
 const cli = require('@lerna/cli')
 
-const LernaProject = require('@lerna/project')
+const { Project: LernaProject } = require('@lerna/project')
 
 const addCmd = require('@lerna/add/command')
 const bootstrapCmd = require('@lerna/bootstrap/command')
@@ -36,7 +36,7 @@ function main(argv) {
 
   const cwd = process.cwd()
   const lernaProject = new LernaProject(cwd)
-  const { extendCommands: commands = [] } = lernaProject.config || {}
+  const { extendCommands: commands = [] } = (lernaProject && lernaProject.config) || {}
 
   let cliInstance = cli()
     .command(addCmd)
