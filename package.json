@@ -1,6 +1,6 @@
 {
   "name": "lerna-cli",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "lerna cli with custom command extensions, forked with official [lerna](https://www.npmjs.com/package/lerna)",
   "author": "imcuttle <imcuttle@163.com.com>",
   "scripts": {
