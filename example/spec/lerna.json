@@ -1,6 +1,6 @@
 {
   "command": {},
-  "extendCommands": ["./commands/custom"],
+  "extendCommands": ["./cmd-preset"],
   "packages": ["packages/*"],
   "version": "0.0.0"
 }

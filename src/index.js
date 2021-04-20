@@ -63,7 +63,16 @@ function main(argv) {
     if (!cmd.endsWith('/command')) {
       cmd = nps.join(cmd, 'command')
     }
-    cliInstance = cliInstance.command(require(cmd))
+
+    const cmdConfig = require(cmd)
+
+    if (Array.isArray(cmdConfig)) {
+      cmdConfig.forEach((eachCmdConfig) => {
+        cliInstance = cliInstance.command(eachCmdConfig)
+      })
+    } else {
+      cliInstance = cliInstance.command(cmdConfig)
+    }
   })
 
   return cliInstance.parse(argv, context)
