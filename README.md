@@ -28,7 +28,7 @@ Add `extendCommands` field, supports local file or npm package
 ```diff
 + "extendCommands": [
 +   "./commands/custom",
-+   "lerna-custom-command"
++   "lerna-custom-command",
 + ],
 ```
 
@@ -59,7 +59,7 @@ exports.builder = {
 }
 
 exports.handler = function handler(argv) {
-  return require('.')(argv)
+  return require('..')(argv)
 }
 ```
 
@@ -68,6 +68,37 @@ exports.handler = function handler(argv) {
 ```bash
 lerna custom
 ```
+
+## Custom preset
+1. `lerna.json`
+
+Add `extendCommands` field, supports local file or npm package
+
+```diff
++ "extendCommands": [
++   "lerna-custom-preset-command",
++ ],
+```
+
+2. Write myself custom command preset in `command.js` or `command/index.js`
+
+
+```javascript
+module.exports = [
+  require('lerna-command-a/command'),
+  require('lerna-command-b/command'),
+  require('lerna-command-c/command')
+]
+```
+
+3. Run custom command
+
+```bash
+lerna custom-a
+lerna custom-b
+lerna custom-c
+```
+
 
 ## Contributing
 
