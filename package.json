@@ -43,7 +43,7 @@
   "repository": "imcuttle/lerna-cli",
   "jest": {
     "testMatch": [
-      "**/__test{s,}__/*.(spec|test).{t,j}s{x,}"
+      "**/__test{s,}__/**/*.(spec|test).{t,j}s{x,}"
     ]
   },
   "commitlint": {
@@ -62,9 +62,6 @@
     "pretty-quick": "^3.1.0"
   },
   "dependencies": {
-    "@lerna/project": "^4.0.0",
-    "import-local": "^3.0.2",
-    "npmlog": "^4.1.2",
     "@lerna/add": "^4.0.0",
     "@lerna/bootstrap": "^4.0.0",
     "@lerna/changed": "^4.0.0",
@@ -78,8 +75,12 @@
     "@lerna/init": "^4.0.0",
     "@lerna/link": "^4.0.0",
     "@lerna/list": "^4.0.0",
+    "@lerna/project": "^4.0.0",
     "@lerna/publish": "^4.0.0",
     "@lerna/run": "^4.0.0",
-    "@lerna/version": "^4.0.0"
+    "@lerna/version": "^4.0.0",
+    "import-local": "^3.0.2",
+    "load-json-file": "^6.2.0",
+    "npmlog": "^4.1.2"
   }
 }

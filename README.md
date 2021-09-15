@@ -11,6 +11,19 @@
 
 See https://github.com/lerna/lerna/issues/2742
 
+## Features (VS Official lerna)
+
+- Support custom command
+- Support nested lerna.json in packages
+  ```text
+  packages/
+    foo/
+      projects/
+        bar/
+      lerna.json
+  lerna.json
+  ```
+
 ## Installation
 
 ```bash
