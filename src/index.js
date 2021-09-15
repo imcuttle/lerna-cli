@@ -2,6 +2,7 @@
  * lerna cli with custom command extensions
  * @author imcuttle
  */
+require('./patches/nested-packages')()
 
 const cli = require('@lerna/cli')
 
