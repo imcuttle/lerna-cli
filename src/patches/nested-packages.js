@@ -36,7 +36,7 @@ function patch() {
     configurable: true,
     enumerable: !!rawDescriptor.enumerable,
     get: function () {
-      const rawGlobs = rawGet.apply(this, arguments) || []
+      const rawGlobs = (rawGet.apply(this, arguments) || []).slice()
       lernaJsonWalk(this.rootPath, rawGlobs, ({ filename, project }) => {
         const packageConfigs = project && project.packageConfigs
         if (packageConfigs && packageConfigs.length) {
