@@ -1,4 +1,8 @@
-# [5.0.0](https://github.com/imcuttle/lerna-cli/compare/v4.1.0...v5.0.0) (2021-09-15)
+## [5.0.1](https://github.com/imcuttle/lerna-cli/compare/v4.1.0...v5.0.1) (2021-09-16)
+
+### Bug Fixes
+
+- immutable op ([c77d252](https://github.com/imcuttle/lerna-cli/commit/c77d2527a76ddc9d1e2a72d7cb4923348e048b92))
 
 # [4.1.0](https://github.com/imcuttle/lerna-cli/compare/v4.0.0...v4.1.0) (2021-04-20)
 
