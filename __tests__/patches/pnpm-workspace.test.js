@@ -6,20 +6,20 @@
 const { Project } = require('@lerna/project')
 const { fixture } = require('../helper')
 
-const CWD = fixture('nested-packages')
+const CWD = fixture('pnpm-workspace')
 
 async function getNames(cwd = CWD) {
   const packages = await Project.getPackages(cwd)
   return packages.map((p) => p.name)
 }
 
-describe('lerna patches: nested-packages', function () {
+describe('lerna patches: pnpm-workspace', function () {
   let unpatch
   let project
   beforeEach(() => {
     project = new Project(CWD)
-    require('../../src/patches/pnpm-workspace')()
-    unpatch = require('../../src/patches/nested-packages')()
+    require('../../src/patches/nested-packages')()
+    unpatch = require('../../src/patches/pnpm-workspace')()
   })
   afterEach(() => {
     unpatch()
@@ -28,30 +28,16 @@ describe('lerna patches: nested-packages', function () {
   it('spec', async function () {
     expect(await getNames()).toMatchInlineSnapshot(`
       Array [
-        "nested-a",
-        "nested-b",
         "normal-a",
-        "inner-a",
-        "inner-b",
+        "normal-c",
       ]
     `)
-  })
 
-  it('offical spec', async function () {
     unpatch()
+
     expect(await getNames()).toMatchInlineSnapshot(`
       Array [
-        "nested-a",
-        "nested-b",
         "normal-a",
-      ]
-    `)
-  })
-
-  it('symbolic link', async function () {
-    expect(await getNames(fixture('nested-packages/packages/nested-b'))).toMatchInlineSnapshot(`
-      Array [
-        "inner-b",
       ]
     `)
   })
