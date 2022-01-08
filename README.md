@@ -29,6 +29,7 @@ See https://github.com/lerna/lerna/issues/2742
   lerna.json
   pnpm-workspace.yaml
   ```
+  In my best practices case: use pnpm as a monorepo manager, use lerna for publishing or some custom commands.
 
 ## Installation
 
@@ -117,6 +118,10 @@ lerna custom-a
 lerna custom-b
 lerna custom-c
 ```
+
+## Recommanded Commands
+- [lerna-gpm](https://github.com/imcuttle/lerna-gpm) - lerna command for git package manager
+- [lerna-command-toc](https://github.com/imcuttle/lerna-command-toc) - lerna command for generate toc of packages in markdown
 
 
 ## Contributing
