@@ -13,8 +13,8 @@ See https://github.com/lerna/lerna/issues/2742
 
 ## Features (VS Official lerna)
 
-- Support custom command
-- Support nested lerna.json in packages
+- Custom command
+- Nested `lerna.json` in packages
   ```text
   packages/
     foo/
@@ -22,6 +22,12 @@ See https://github.com/lerna/lerna/issues/2742
         bar/
       lerna.json
   lerna.json
+  ```
+- Respect pnpm-workspace.yaml (overwriting `packages` in `lerna.json`)
+  ```text
+  packages/
+  lerna.json
+  pnpm-workspace.yaml
   ```
 
 ## Installation
