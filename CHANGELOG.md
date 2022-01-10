@@ -1,4 +1,4 @@
-## [5.0.2](https://github.com/imcuttle/lerna-cli/compare/v5.0.1...v5.0.2) (2022-01-08)
+## [5.0.3](https://github.com/imcuttle/lerna-cli/compare/v5.0.1...v5.0.3) (2022-01-10)
 
 ## [5.0.1](https://github.com/imcuttle/lerna-cli/compare/v4.1.0...v5.0.1) (2021-09-16)
 
