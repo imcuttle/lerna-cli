@@ -1,0 +1,14 @@
+lockfileVersion: 5.3
+
+importers:
+  .:
+    specifiers: {}
+
+  packages/normal-a:
+    specifiers: {}
+
+  packages/normal-c:
+    specifiers:
+      normal-a: workspace:^
+    dependencies:
+      normal-a: link:../normal-a

@@ -60,7 +60,8 @@
     "husky": "^4.3.0",
     "jest": "^26.6.0",
     "prettier": "^2.1.2",
-    "pretty-quick": "^3.1.0"
+    "pretty-quick": "^3.1.0",
+    "pnpm": "^6.25.1"
   },
   "dependencies": {
     "@lerna/add": "^4.0.0",
@@ -77,11 +78,13 @@
     "@lerna/link": "^4.0.0",
     "@lerna/list": "^4.0.0",
     "@lerna/project": "^4.0.0",
+    "@lerna/package": "^4.0.0",
     "@lerna/publish": "^4.0.0",
     "@lerna/run": "^4.0.0",
     "@lerna/version": "^4.0.0",
     "import-local": "^3.0.2",
     "load-json-file": "^6.2.0",
+    "lodash.clonedeep": "^4.5.0",
     "npmlog": "^4.1.2",
     "read-yaml-file": "^2.1.0"
   }

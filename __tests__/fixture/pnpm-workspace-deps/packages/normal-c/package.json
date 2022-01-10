@@ -1,0 +1,7 @@
+{
+  "name": "normal-c",
+  "version": "1.0.0",
+  "dependencies": {
+    "normal-a": "workspace:^"
+  }
+}

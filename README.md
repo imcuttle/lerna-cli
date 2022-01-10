@@ -13,6 +13,7 @@ See https://github.com/lerna/lerna/issues/2742
 
 ## Features (VS Official lerna)
 
+- Use local `lerna` even in global command. see [import-local](https://www.npmjs.com/package/import-local)
 - Custom command
 - Nested `lerna.json` in packages
   ```text
@@ -23,7 +24,9 @@ See https://github.com/lerna/lerna/issues/2742
       lerna.json
   lerna.json
   ```
-- Respect pnpm-workspace.yaml (overwriting `packages` in `lerna.json`)
+- Respect pnpm-workspace.yaml
+  1. overwriting `packages`
+  2. dependencies' version allows `workspace:version`
   ```text
   packages/
   lerna.json
@@ -90,6 +93,7 @@ lerna custom
 ```
 
 ## Custom preset
+
 1. `lerna.json`
 
 Add `extendCommands` field, supports local file or npm package
@@ -101,7 +105,6 @@ Add `extendCommands` field, supports local file or npm package
 ```
 
 2. Write myself custom command preset in `command.js` or `command/index.js`
-
 
 ```javascript
 module.exports = [
@@ -120,9 +123,9 @@ lerna custom-c
 ```
 
 ## Recommanded Commands
+
 - [lerna-gpm](https://github.com/imcuttle/lerna-gpm) - lerna command for git package manager
 - [lerna-command-toc](https://github.com/imcuttle/lerna-command-toc) - lerna command for generate toc of packages in markdown
-
 
 ## Contributing
 
