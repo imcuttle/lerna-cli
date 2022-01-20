@@ -1,0 +1,7 @@
+{
+  "name": "normal-a",
+  "version": "1.0.0",
+  "dependencies": {
+    "normal-c": "^1.0.0"
+  }
+}

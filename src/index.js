@@ -5,6 +5,8 @@
 require('./patches/pnpm-workspace-deps')()
 require('./patches/pnpm-workspace')()
 require('./patches/nested-packages')()
+require('./patches/fix-conventional-commit')()
+require('./patches/after-lerna-version-update-lockfile')()
 
 const cli = require('@lerna/cli')
 

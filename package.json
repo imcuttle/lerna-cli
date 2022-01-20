@@ -59,9 +59,9 @@
     "conventional-changelog-cli": "^2.1.0",
     "husky": "^4.3.0",
     "jest": "^26.6.0",
+    "pnpm": "^6.25.1",
     "prettier": "^2.1.2",
-    "pretty-quick": "^3.1.0",
-    "pnpm": "^6.25.1"
+    "pretty-quick": "^3.1.0"
   },
   "dependencies": {
     "@lerna/add": "^4.0.0",
@@ -69,6 +69,7 @@
     "@lerna/changed": "^4.0.0",
     "@lerna/clean": "^4.0.0",
     "@lerna/cli": "^4.0.0",
+    "@lerna/conventional-commits": "^4.0.0",
     "@lerna/create": "^4.0.0",
     "@lerna/diff": "^4.0.0",
     "@lerna/exec": "^4.0.0",
@@ -77,8 +78,8 @@
     "@lerna/init": "^4.0.0",
     "@lerna/link": "^4.0.0",
     "@lerna/list": "^4.0.0",
-    "@lerna/project": "^4.0.0",
     "@lerna/package": "^4.0.0",
+    "@lerna/project": "^4.0.0",
     "@lerna/publish": "^4.0.0",
     "@lerna/run": "^4.0.0",
     "@lerna/version": "^4.0.0",
@@ -86,6 +87,7 @@
     "load-json-file": "^6.2.0",
     "lodash.clonedeep": "^4.5.0",
     "npmlog": "^4.1.2",
-    "read-yaml-file": "^2.1.0"
+    "read-yaml-file": "^2.1.0",
+    "write-yaml-file": "^4.2.0"
   }
 }
