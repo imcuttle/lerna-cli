@@ -10,8 +10,15 @@ const fixPnpmLockFile = async (filename, updatesVersions) => {
 
   if (lockData && lockData.importers) {
     for (const [_subPath, lockItem] of Object.entries(lockData.importers)) {
-      if (lockItem.dependencies && lockItem.specifiers) {
-        for (const [name, spec] of Object.entries(lockItem.dependencies)) {
+      const deps = {
+        ...lockItem.peerDependencies,
+        ...lockItem.devDependencies,
+        ...lockItem.dependencies
+      }
+
+      if (lockItem.specifiers) {
+        // devDependencies
+        for (const [name, spec] of Object.entries(deps)) {
           const nextVersion = updatesVersions.get(name)
           if (nextVersion) {
             if (spec.startsWith('link:') && lockItem.specifiers[name]) {
