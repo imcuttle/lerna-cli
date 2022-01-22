@@ -59,7 +59,7 @@ module.exports = function patch() {
       .then((filenames) => {
         filenames = filenames.filter(Boolean)
         if (filenames.length && this.commitAndTag) {
-          chain = chain.then(() => gitAdd(Array.from(filenames), this.gitOpts, this.execOpts))
+          return gitAdd(Array.from(filenames), this.gitOpts, this.execOpts)
         }
       })
 
