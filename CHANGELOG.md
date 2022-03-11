@@ -1,3 +1,9 @@
+# [5.1.0](https://github.com/imcuttle/lerna-cli/compare/v5.0.6...v5.1.0) (2022-03-11)
+
+### Features
+
+- supports workspace \* ([b64cc20](https://github.com/imcuttle/lerna-cli/commit/b64cc20eef1cffd791cea5b0b55b50331658d06f))
+
 ## [5.0.6](https://github.com/imcuttle/lerna-cli/compare/v5.0.5...v5.0.6) (2022-01-22)
 
 ## [5.0.5](https://github.com/imcuttle/lerna-cli/compare/v5.0.4...v5.0.5) (2022-01-22)
