@@ -43,6 +43,7 @@
   "license": "MIT",
   "repository": "imcuttle/lerna-cli",
   "jest": {
+    "testEnvironment": "node",
     "testMatch": [
       "**/__test{s,}__/**/*.(spec|test).{t,j}s{x,}"
     ]
@@ -58,6 +59,7 @@
     "@types/jest": "^26.0.15",
     "conventional-changelog-cli": "^2.1.0",
     "husky": "^4.3.0",
+    "is-ci": "^3.0.1",
     "jest": "^26.6.0",
     "pnpm": "^6.25.1",
     "prettier": "^2.1.2",
@@ -73,21 +75,36 @@
     "@lerna/create": "^4.0.0",
     "@lerna/diff": "^4.0.0",
     "@lerna/exec": "^4.0.0",
+    "@lerna/get-packed": "^4.0.0",
     "@lerna/import": "^4.0.0",
     "@lerna/info": "^4.0.0",
     "@lerna/init": "^4.0.0",
     "@lerna/link": "^4.0.0",
     "@lerna/list": "^4.0.0",
+    "@lerna/pack-directory": "^4.0.0",
     "@lerna/package": "^4.0.0",
     "@lerna/project": "^4.0.0",
     "@lerna/publish": "^4.0.0",
     "@lerna/run": "^4.0.0",
+    "@lerna/run-lifecycle": "^4.0.0",
     "@lerna/version": "^4.0.0",
+    "@pnpm/cli-utils": "^0.6.50",
+    "@pnpm/exportable-manifest": "^2.3.2",
+    "@pnpm/logger": "^4.0.0",
+    "@pnpm/package-bins": "^5.0.12",
+    "fs-extra": "^10.0.1",
     "import-local": "^3.0.2",
     "load-json-file": "^6.2.0",
     "lodash.clonedeep": "^4.5.0",
+    "npm-package-arg": "^8.1.5",
+    "npm-packlist": "^2.1.4",
     "npmlog": "^4.1.2",
     "read-yaml-file": "^2.1.0",
-    "write-yaml-file": "^4.2.0"
+    "tar-stream": "^2.2.0",
+    "temp-dir": "^1.0.0",
+    "uuid": "^3.3.2",
+    "write-pkg": "^4.0.0",
+    "write-yaml-file": "^4.2.0",
+    "zlib": "^1.0.5"
   }
 }
