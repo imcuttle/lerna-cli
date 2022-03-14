@@ -1,3 +1,9 @@
+## [5.1.1](https://github.com/imcuttle/lerna-cli/compare/v5.1.0...v5.1.1) (2022-03-14)
+
+### Features
+
+- respect lockfile ([11d6cbb](https://github.com/imcuttle/lerna-cli/commit/11d6cbb1d37a8c7bf1e25d396f7f9fd8f81aa943))
+
 # [5.1.0](https://github.com/imcuttle/lerna-cli/compare/v5.0.6...v5.1.0) (2022-03-11)
 
 ### Features
