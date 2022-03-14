@@ -404,3 +404,4 @@ class PatchedPackage {
 }
 
 module.exports.Package = PatchedPackage
+module.exports.parseWorkspaceVersionAlias = parseWorkspaceVersionAlias

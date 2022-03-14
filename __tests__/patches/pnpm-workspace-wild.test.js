@@ -5,6 +5,9 @@
  */
 const { fixture } = require('../helper')
 const fs = require('fs')
+const cp = require('child_process')
+const { tarPackEntry } = require('tar-stream')
+const readYaml = require('read-yaml-file')
 const isCI = require('is-ci')
 
 jest.mock('@lerna/version/lib/git-add', () => {
@@ -41,6 +44,22 @@ jest.mock('@lerna/version/lib/git-tag', () => {
 jest.mock('@lerna/npm-publish', () => {
   return {
     npmPublish: jest.fn(() => {})
+  }
+})
+
+jest.mock('tar-stream', () => {
+  const tar = jest.requireActual('tar-stream')
+  const tarPackEntry = jest.fn((a, b, cb) => {
+    cb && cb(null)
+  })
+  return {
+    ...tar,
+    tarPackEntry,
+    pack: () => {
+      const p = tar.pack()
+      p.entry = tarPackEntry
+      return p
+    }
   }
 })
 
@@ -100,6 +119,9 @@ describe('lerna patches: pnpm-workspace-wild', function () {
       )
     )
 
+    process.chdir(fixture('pnpm-workspace-wild'))
+    cp.execSync(`pnpm i`, { cwd: fixture('pnpm-workspace-wild') })
+
     unpatchs = [
       require('./../../src/patches/pnpm-workspace-deps')(),
       require('./../../src/patches/pnpm-workspace')(),
@@ -107,11 +129,12 @@ describe('lerna patches: pnpm-workspace-wild', function () {
       require('./../../src/patches/fix-conventional-commit')(),
       require('./../../src/patches/after-lerna-version-update-lockfile')()
     ]
-    process.chdir(fixture('pnpm-workspace-wild'))
   })
   afterEach(() => {
     unpatchs.forEach((fn) => fn())
     process.chdir(cwd)
+
+    tarPackEntry.mockClear()
   })
   if (isCI) {
     return
@@ -125,9 +148,31 @@ describe('lerna patches: pnpm-workspace-wild', function () {
     })
 
     await publishCmd.runner
+    const [aArgs, bArgs] = tarPackEntry.mock.calls
+    expect(JSON.parse(aArgs[1])).toMatchObject({
+      name: 'normal-c',
+      version: '1.0.1'
+    })
+    expect(JSON.parse(bArgs[1])).toMatchObject({
+      name: 'normal-a',
+      version: '1.0.1',
+      dependencies: {
+        'normal-c': '1.0.1'
+      }
+    })
 
-    const { npmPublish } = require('@lerna/npm-publish')
-    const [pkg] = npmPublish.mock.calls[1]
-    console.log(pkg, pkg.packed)
+    const normalAPkg = JSON.parse(
+      await fs.promises.readFile(fixture('pnpm-workspace-wild/packages/normal-a/package.json'), 'utf-8')
+    )
+    expect(normalAPkg).toMatchObject({
+      name: 'normal-a',
+      version: '1.0.1',
+      dependencies: {
+        'normal-c': 'workspace:*'
+      }
+    })
+
+    const lockData = await readYaml(fixture('pnpm-workspace-wild/pnpm-lock.yaml'))
+    expect(lockData.importers['packages/normal-a']['specifiers']['normal-c']).toBe('workspace:*')
   })
 })

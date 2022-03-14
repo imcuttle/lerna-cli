@@ -3,6 +3,7 @@ const fs = require('fs')
 const readYaml = require('read-yaml-file')
 const writeYaml = require('write-yaml-file')
 const { gitAdd } = require('@lerna/version/lib/git-add')
+const { parseWorkspaceVersionAlias } = require('./pnpm-workspace-deps/patched-package')
 
 const fixPnpmLockFile = async (filename, updatesVersions) => {
   const lockData = await readYaml(filename)
@@ -22,7 +23,13 @@ const fixPnpmLockFile = async (filename, updatesVersions) => {
           const nextVersion = updatesVersions.get(name)
           if (nextVersion) {
             if (spec.startsWith('link:') && lockItem.specifiers[name]) {
-              const output = lockItem.specifiers[name].match(/^([\D]*)\d/)
+              const prevSpec = lockItem.specifiers[name]
+              if (parseWorkspaceVersionAlias(prevSpec)) {
+                lockItem.specifiers[name] = prevSpec
+                continue
+              }
+
+              const output = prevSpec.match(/^([\D]*)\d/)
               if (output) {
                 lockItem.specifiers[name] = output[1] + nextVersion
               } else {
