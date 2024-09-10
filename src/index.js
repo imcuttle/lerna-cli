@@ -2,6 +2,18 @@
  * lerna cli with custom command extensions
  * @author imcuttle
  */
+const nps = require('path')
+const resolveModules = modules => {
+  return modules.reduce((acc, p) => {
+    acc[p] = nps.dirname(require.resolve(p + '/package.json'))
+    return acc;
+  }, {})
+}
+require('module-path-hook/register')({
+  // See webpack resolve: https://webpack.docschina.org/configuration/resolve/
+  alias: resolveModules(['@lerna/package', '@lerna/pack-directory', '@lerna/project', '@lerna/conventional-commits']),
+});
+
 require('./patches/pnpm-workspace-deps')()
 require('./patches/pnpm-workspace')()
 require('./patches/nested-packages')()
@@ -9,6 +21,7 @@ require('./patches/fix-conventional-commit')()
 require('./patches/after-lerna-version-update-lockfile')()
 
 const cli = require('@lerna/cli')
+const resolveGlobal = require('resolve-global');
 
 const { Project: LernaProject } = require('@lerna/project')
 
@@ -27,8 +40,6 @@ const listCmd = require('@lerna/list/command')
 const publishCmd = require('@lerna/publish/command')
 const runCmd = require('@lerna/run/command')
 const versionCmd = require('@lerna/version/command')
-
-const nps = require('path')
 
 const pkg = require('../package.json')
 
@@ -69,7 +80,16 @@ function main(argv) {
       cmd = nps.join(cmd, 'command')
     }
 
-    const cmdConfig = require(cmd)
+    let cmdConfig;
+    try {
+      cmdConfig = require(cmd)
+    } catch (err) {
+      if (err.code === 'MODULE_NOT_FOUND') {
+        cmdConfig = require(resolveGlobal(cmd))
+      } else {
+        throw err
+      }
+    }
 
     if (Array.isArray(cmdConfig)) {
       cmdConfig.forEach((eachCmdConfig) => {
